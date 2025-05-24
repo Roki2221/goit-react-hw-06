@@ -1,12 +1,13 @@
 import Contact from '../Contact/Contact';
-
-export default function ContactList({ onDelete, contactsData }) {
+import { useSelector } from 'react-redux';
+export default function ContactList() {
+  const contactsData = useSelector(state => state.contacts.items);
   return (
     <ul>
       {contactsData.map(item => {
         return (
           <li key={item.id}>
-            <Contact onDelete={onDelete} contactInfo={item}></Contact>
+            <Contact contactInfo={item}></Contact>
           </li>
         );
       })}
